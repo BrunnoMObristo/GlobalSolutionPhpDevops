@@ -1,0 +1,22 @@
+-> Nome do Banco de Dados: bilen
+
+
+CREATE TABLE `veiculos` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `marca` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+ `modelo` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+ `ano` int(5) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+CREATE TABLE `agendamentos` (
+ `registro` int(11) NOT NULL AUTO_INCREMENT,
+ `horario` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+ `local` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+ `veiculo_id` int(11) NOT NULL,
+ PRIMARY KEY (`registro`),
+ KEY `fk_veiculos_agendamentos` (`veiculo_id`),
+ CONSTRAINT `fk_veiculos_agendamentos` FOREIGN KEY (`veiculo_id`) REFERENCES `veiculos` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
